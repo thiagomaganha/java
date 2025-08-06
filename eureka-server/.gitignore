@@ -1,0 +1,58 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.dbeaver
+
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+### Tests ###
+/tests/util/__pycache__/
+/tests/execution_log.txt
+/tests/features/frontend/pages/__pycache__/
+
+### Python ###
+*.pyc
+
+### Compile Output and Dependencies ###
+**/node_modules
+**/node
+**/dist
+**/tmp
+**/out-tsc
+**/static
+**/bin
+**/.sonarlint/
+/.metadata/
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build

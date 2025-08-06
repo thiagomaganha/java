@@ -3,7 +3,7 @@ client-origin-url: ${client-origin-url}
 eureka:
   client:
     service-url:
-      defaultZone: ${eureka-url}
+      defaultZone: ${EUREKA_URI}
 
 spring:
   application:

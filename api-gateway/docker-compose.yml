@@ -1,0 +1,26 @@
+
+services:
+  eureka-server:
+    image: localhost/eureka-server:latest
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - app-network
+
+  api-gateway:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - client-origin-url=http://localhost:4200
+      - EUREKA_URI=http://eureka-server:8761/eureka
+      - SPRING_PROFILES_ACTIVE=cloud
+    networks:
+      - app-network
+    depends_on:
+      - eureka-server
+
+networks:
+  app-network:
+    driver: bridge

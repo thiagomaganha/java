@@ -14,7 +14,19 @@ java {
 	}
 }
 
+repositories {
+	System.getenv()["CI"] == null && mavenCentral()
+	maven {
+		url("https://artifacts.dell.com/artifactory/apsvcs-1002694-maven-dev-local")
+	}
+	maven {
+		url("https://artifacts.dell.com/artifactory/maven")
+	}
+
+}
+
 dependencies {
+
 
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.3.0'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'

@@ -14,14 +14,8 @@ Spring Cloud Gateway is a modern, reactive, and lightweight API Gateway built on
 
 Key Advantages:
   ✅ Reactive and Non-blocking: Built on Project Reactor for high scalability.
-  
   ✅ Eureka Integration: Supports dynamic routing via service discovery.
-  
   ✅ Declarative Route Configuration: Define routes easily using YAML or Java DSL.
-  
   ✅ Custom Filters: Create reusable filters for authentication, logging, etc.
-  
   ✅ Spring Boot Native: Leverages Spring Boot’s simplicity and auto-configuration.
-  
   ✅ Extensible: Easily extend with custom logic and filters.
-
