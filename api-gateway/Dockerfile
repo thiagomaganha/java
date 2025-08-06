@@ -1,20 +1,25 @@
-# Use an official OpenJDK image
-FROM openjdk:17-jdk-alpine
+# Use official Gradle image with JDK 17
+FROM gradle:8.5-jdk17-alpine AS build
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Copy everything first
 COPY . /app
 
-# Set JAVA_OPTS environment variable
-ENV JAVA_OPTS="-Xms512M -Xmx512M"
+# Make gradlew executable
+RUN chmod +x gradlew
 
-# Expose the port that the application uses
+# Build the Spring Boot JAR
+RUN ./gradlew bootJar --no-daemon
+
+# Runtime image
+FROM openjdk:17-jdk-alpine
+
+WORKDIR /app
+
+# Copy the built JAR from the build stage
+COPY --from=build /app/build/libs/*.jar app.jar
+
 EXPOSE 8080
 
-# Set permissions
-RUN chmod +x /app/build/libs/api-gateway-0.0.1-SNAPSHOT.jar
-
-# Run the application
-CMD ["java", "-jar", "/app/build/libs/api-gateway-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]

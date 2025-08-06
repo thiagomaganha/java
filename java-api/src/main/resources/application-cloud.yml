@@ -1,6 +1,6 @@
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URI}
+      defaultZone: ${eureka-uri}
 
 

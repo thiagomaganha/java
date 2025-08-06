@@ -13,17 +13,6 @@ java {
 	}
 }
 
-repositories {
-	System.getenv()["CI"] == null && mavenCentral()
-	maven {
-		url("https://artifacts.dell.com/artifactory/apsvcs-1002694-maven-dev-local")
-	}
-	maven {
-		url("https://artifacts.dell.com/artifactory/maven")
-	}
-
-}
-
 ext {
 	set('springCloudVersion', "2025.0.0")
 }

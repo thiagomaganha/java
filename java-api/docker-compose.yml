@@ -12,7 +12,7 @@ services:
     image: localhost/api-gateway:latest
     container_name: api-gateway
     environment:
-      - EUREKA_URI=http://eureka-server:8761/eureka
+      - eureka-uri=http://eureka-server:8761/eureka
       - client-origin-url=http://localhost:4200
       - SPRING_PROFILES_ACTIVE=cloud
     ports:
@@ -33,7 +33,7 @@ services:
     networks:
       - app-network
     environment:
-      - EUREKA_URI=http://eureka-server:8761/eureka
+      - eureka-uri=http://eureka-server:8761/eureka
       - SPRING_PROFILES_ACTIVE=cloud
 
 networks:
