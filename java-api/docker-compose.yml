@@ -23,7 +23,7 @@ services:
       - app-network
 
   java-api:
-    image: localhost/java-api:latest
+    build: .
     container_name: java-api
     ports:
       - "8081:8081"
