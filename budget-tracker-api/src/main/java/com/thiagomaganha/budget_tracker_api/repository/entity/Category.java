@@ -1,11 +1,11 @@
 package com.thiagomaganha.budget_tracker_api.repository.entity;
 
+import com.thiagomaganha.budget_tracker_api.repository.converter.CategoryTypeConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import java.util.Set;
 import java.util.UUID;
 import java.time.ZonedDateTime;
 
@@ -25,12 +25,10 @@ public class Category {
     private String categoryName;
 
     @Column(name = "category_type", nullable = false)
-    private String CategoryType;
+    @Convert(converter = CategoryTypeConverter.class)
+    private CategoryType CategoryType;
 
     @Column(name = "created_at", nullable = false)
     private ZonedDateTime createdAt;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 }
+

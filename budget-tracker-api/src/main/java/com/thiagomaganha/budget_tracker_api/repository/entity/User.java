@@ -32,8 +32,5 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Account> accounts;
-
-    @OneToMany(mappedBy = "user")
-    private Set<Category> categories;
 }
 

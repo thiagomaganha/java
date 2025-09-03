@@ -20,12 +20,10 @@ CREATE TABLE IF NOT EXISTS accounts(
 
 CREATE TABLE IF NOT EXISTS categories (
     category_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    user_id UUID NOT NULL,
     category_name VARCHAR(255) NOT NULL,
     category_type category_type NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    UNIQUE (user_id, category_name)
+    UNIQUE (category_name)
 );
 
 CREATE TABLE IF NOT EXISTS incomes (

@@ -17,7 +17,7 @@ public class UserRepositoryTest extends BaseRepositoryTest {
     private UserRepository userRepository;
 
     private User createTestUser() {
-        return new User(null, "testUser", "123456789", ZonedDateTime.now(), null, null);
+        return new User(null, "testUser", "123456789", ZonedDateTime.now(), null);
     }
 
     @Test

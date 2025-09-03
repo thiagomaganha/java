@@ -27,7 +27,7 @@ public class AccountRepositoryTest extends BaseRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        testUser = userRepository.save(new User(null, "testUser", "123456789", ZonedDateTime.now(), null, null));
+        testUser = userRepository.save(new User(null, "testUser", "123456789", ZonedDateTime.now(), null));
     }
 
     private Account createTestAccount() {
