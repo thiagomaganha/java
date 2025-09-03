@@ -24,16 +24,16 @@ public class Account {
     @Column(name = "created_at", nullable = false)
     private ZonedDateTime createdAt;
 
-    // An account belongs to one user
+    @Column(name = "account_name", nullable = false)
+    private String accountName;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // An account can have many incomes
     @OneToMany(mappedBy = "account")
     private Set<Income> incomes;
 
-    // An account can have many fixed expenses
     @OneToMany(mappedBy = "account")
     private Set<Expense> fixedExpenses;
 }

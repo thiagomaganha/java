@@ -17,7 +17,7 @@ import java.time.ZonedDateTime;
 public class User {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid2")
     @Column(name = "user_id", columnDefinition = "UUID")
     private UUID userId;
 
