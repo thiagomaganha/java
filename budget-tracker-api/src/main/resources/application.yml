@@ -1,0 +1,70 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    #DB connection pool
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      leak-detection-threshold: 60000
+      pool-name: "BudgetTracker"
+      connection-test-query: "SELECT 1"
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+  # Flyway Configuration
+  flyway:
+    enabled: true
+    locations: classpath:migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    clean-disabled: true
+  #JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: validate                 # Use 'validate' for production, 'update' for dev
+    show-sql: true                      # Set to true only in development
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: false
+        jdbc:
+          batch_size: 20
+          fetch_size: 50
+        order_inserts: true
+        order_updates: true
+        batch_versioned_data: true
+
+#health check and metrics
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,hikaricp
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      simple:
+        enabled: true
+
+#Logs
+logging:
+  level:
+    com.zaxxer.hikari: INFO              # HikariCP logging
+    org.hibernate.SQL: WARN              # SQL queries (set to DEBUG in dev)
+    org.hibernate.type.descriptor.sql: WARN  # SQL parameters
